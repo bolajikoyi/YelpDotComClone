@@ -1,0 +1,32 @@
+<div class="header-items">
+  <img class="yelp-logo" src="assets/image/yelp-logo.jpg" alt="" />
+
+  <div class="search-box">
+    <div class="">
+      <input
+        class=""
+        type="text"
+        name="search-item"
+        id="search-item"
+        placeholder="item"
+        [(ngModel)]="searchItem"
+        (keyup)="searchType()"
+      />
+    </div>
+    |
+    <div class="">
+      <input
+        class=""
+        type="text"
+        name="search-place"
+        id="search-place"
+        placeholder="city"
+        [(ngModel)]="searchCity"
+        (keyup)="searchPlace()"
+      />
+    </div>
+  </div>
+  <div class="search-button" (click)="searchButton()">
+    <i class="fas fa-search"></i>
+  </div>
+</div>

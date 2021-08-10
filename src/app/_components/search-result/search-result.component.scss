@@ -1,0 +1,31 @@
+.search-result {
+  text-align: center;
+  padding: 10px 20px;
+  font-size: large;
+  color: #bcb8b1;
+}
+.photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.search-data {
+  margin-top: 30px;
+  div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+.search-items {
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.name {
+  font-size: x-large;
+  font-weight: 700;
+}

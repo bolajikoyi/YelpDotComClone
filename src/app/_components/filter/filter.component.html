@@ -1,0 +1,20 @@
+<!-- <div class="filter-title">filter</div>
+<div class="filter">
+  <span>&#8364;</span>
+  <span>&#8364;&#8364;</span>
+  <span>&#8364;&#8364;&#8364;</span>
+  <span>&#8364;&#8364;&#8364;&#8364;</span>
+</div>
+<hr /> -->
+<div class="category-title">Filter by Category</div>
+<hr />
+<div
+  *ngFor="let types of type$ | async; index as i"
+  class="category"
+  [id]="'filterbutton' + i"
+  #filterButton
+  (click)="categoryFilter(types, filterButton.id)"
+  [ngClass]="selected == filterButton.id ? 'buttonActive' : ''"
+>
+  {{ types }}
+</div>

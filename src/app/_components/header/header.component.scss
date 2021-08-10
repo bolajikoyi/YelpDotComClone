@@ -1,0 +1,49 @@
+.yelp-logo {
+  height: 80px;
+  margin-right: 15%;
+}
+.header-items {
+  display: flex;
+}
+.search-box {
+  display: flex;
+  background: #fff;
+  flex-direction: row;
+  // align-items: center;
+  align-self: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+
+#search-place {
+  border: unset;
+  outline: none;
+}
+#search-item {
+  border: unset;
+  outline: none;
+}
+input::placeholder {
+  color: #bcb8b1;
+}
+.search-button {
+  display: flex;
+  align-self: center;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 0;
+  margin-left: 2px;
+  height: 30px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+}
