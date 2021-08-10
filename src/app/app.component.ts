@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   }
   filterFunction(event: string) {
     this.filter$.next(event);
-    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${event}&key=AIzaSyD36Z7sXImc__tax_Z7GKa-dm2jnv550e8`;
+    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${event}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data) => {
       this.data$.next(data);
     });
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   //https://cors-anywhere.herokuapp.com/corsdemo
   //visit the above url to grant cors permission.
   search() {
-    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=AIzaSyD36Z7sXImc__tax_Z7GKa-dm2jnv550e8`;
+    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data: any) => {
       this.data$.next(data);
       //empty array to save the types
