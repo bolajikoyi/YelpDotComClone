@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   data$ = new ReplaySubject();
   category$ = new ReplaySubject<string[]>();
   filter$ = new ReplaySubject<string>();
+  menuList$ = new ReplaySubject<string>();
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
@@ -56,5 +57,9 @@ export class AppComponent implements OnInit {
         this.category$.next(uniqCategory);
       }
     });
+  }
+  menuFxn(item: string) {
+    // the string value is taken from the function on click event, and it is saved in an observable ( i.e. replaysubject)
+    this.menuList$.next(item);
   }
 }

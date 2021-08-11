@@ -2,24 +2,47 @@
   <app-header
     (itemType)="yelpDataOutput($event)"
     (place)="cityName($event)"
+    [menuList]="menuList$ | async"
   ></app-header>
   <ul class="items">
     <li class="restaurant">
       Restaurant <i class="fas fa-angle-down"></i>
       <ul class="restaurant-items">
         <div>
-          <li><i class="fas fa-biking"></i><span>Delivery</span></li>
-          <li><i class="fas fa-hamburger"></i><span>Citizens</span></li>
-          <li><i class="fas fa-cocktail"></i><span>Chinese</span></li>
-          <li><i class="fas fa-pizza-slice"></i><span>Italian</span></li>
+          <li>
+            <i class="fas fa-biking"></i
+            ><span (click)="menuFxn('Delivery')">Delivery</span>
+          </li>
+          <li>
+            <i class="fas fa-hamburger"></i
+            ><span (click)="menuFxn('Citizens')">Citizens</span>
+          </li>
+          <li>
+            <i class="fas fa-cocktail"></i
+            ><span (click)="menuFxn('Chinese')">Chinese</span>
+          </li>
+          <li>
+            <i class="fas fa-pizza-slice"></i
+            ><span (click)="menuFxn('Italian')">Italian</span>
+          </li>
         </div>
         <div>
           <li>
-            <i class="far fa-calendar-check"></i><span>Reservations</span>
+            <i class="far fa-calendar-check"></i
+            ><span (click)="menuFxn('Reservations')">Reservations</span>
           </li>
-          <li><i class="fas fa-bread-slice"></i><span>Japanese</span></li>
-          <li><i class="fas fa-hotdog"></i><span>Mexican</span></li>
-          <li><i class="fas fa-fish"></i><span>Thai</span></li>
+          <li>
+            <i class="fas fa-bread-slice"></i
+            ><span (click)="menuFxn('Japanese')">Japanese</span>
+          </li>
+          <li>
+            <i class="fas fa-hotdog"></i
+            ><span (click)="menuFxn('Mexican')">Mexican</span>
+          </li>
+          <li>
+            <i class="fas fa-fish"></i
+            ><span (click)="menuFxn('Thai')">Thai</span>
+          </li>
         </div>
       </ul>
     </li>
@@ -28,24 +51,43 @@
       <ul class="craft-service-list">
         <div>
           <li>
-            <i class="fas fa-hammer"></i><span>Construction company</span>
+            <i class="fas fa-hammer"></i
+            ><span (click)="menuFxn('Construction Company')"
+              >Construction company</span
+            >
           </li>
-          <li><i class="fas fa-plug"></i><span>Electrician</span></li>
           <li>
-            <i class="fas fa-hands-wash"></i><span>Cleaning company</span>
+            <i class="fas fa-plug"></i
+            ><span (click)="menuFxn('Electrician')">Electrician</span>
+          </li>
+          <li>
+            <i class="fas fa-hands-wash"></i
+            ><span (click)="menuFxn('Cleaning company')">Cleaning company</span>
           </li>
           <li>
             <i class="fas fa-fire-alt"></i
-            ><span>Heating & air conditioning</span>
+            ><span (click)="menuFxn('Heating and air conditioning')"
+              >Heating & air conditioning</span
+            >
           </li>
         </div>
         <div>
-          <li><i class="fas fa-mountain"></i><span>Landscaping</span></li>
-          <li><i class="fas fa-user-lock"></i><span>Locksmiths</span></li>
           <li>
-            <i class="fas fa-truck-moving"></i><span>Moving company</span>
+            <i class="fas fa-mountain"></i
+            ><span (click)="menuFxn('Landscaping')">Landscaping</span>
           </li>
-          <li><i class="fas fa-shower"></i><span>Installers</span></li>
+          <li>
+            <i class="fas fa-user-lock"></i
+            ><span (click)="menuFxn('Locksmiths')">Locksmiths</span>
+          </li>
+          <li>
+            <i class="fas fa-truck-moving"></i
+            ><span (click)="menuFxn('Moving company')">Moving company</span>
+          </li>
+          <li>
+            <i class="fas fa-shower"></i
+            ><span (click)="menuFxn('Installers')">Installers</span>
+          </li>
         </div>
       </ul>
     </li>
@@ -53,19 +95,41 @@
       Around the Car <i class="fas fa-angle-down"></i>
       <ul class="around-the-car-list">
         <div>
-          <li><i class="fas fa-wrench"></i><span>Auto repair shop</span></li>
-          <li><i class="fas fa-tools"></i><span>Car preparation</span></li>
           <li>
-            <i class="fas fa-leaf"></i><span>Plant shop & body shop</span>
+            <i class="fas fa-wrench"></i
+            ><span (click)="menuFxn('Auto repair shop')">Auto repair shop</span>
           </li>
-          <li><i class="fas fa-car"></i><span>Car wash</span></li>
+          <li>
+            <i class="fas fa-tools"></i
+            ><span (click)="menuFxn('Car preparation')">Car preparation</span>
+          </li>
+          <li>
+            <i class="fas fa-leaf"></i
+            ><span (click)="menuFxn('plant shop and body shop')"
+              >Plant shop & body shop</span
+            >
+          </li>
+          <li>
+            <i class="fas fa-car"></i
+            ><span (click)="menuFxn('Car wash')">Car wash</span>
+          </li>
         </div>
         <div>
-          <li><i class="fas fa-key"></i><span>Car dealer</span></li>
-          <li><i class="fas fa-oil-can"></i><span>Oil change</span></li>
-          <li><i class="fas fa-parking"></i><span>Parking spaces</span></li>
           <li>
-            <i class="fas fa-truck-monster"></i><span>Towing service</span>
+            <i class="fas fa-key"></i
+            ><span (click)="menuFxn('Car dealer')">Car dealer</span>
+          </li>
+          <li>
+            <i class="fas fa-oil-can"></i
+            ><span (click)="menuFxn('Oil change')">Oil change</span>
+          </li>
+          <li>
+            <i class="fas fa-parking"></i
+            ><span (click)="menuFxn('Parking spaces')">Parking spaces</span>
+          </li>
+          <li>
+            <i class="fas fa-truck-monster"></i
+            ><span (click)="menuFxn('Towing service')">Towing service</span>
           </li>
         </div>
       </ul>
@@ -75,19 +139,43 @@
       <ul class="more-list">
         <div>
           <li>
-            <i class="fas fa-pump-soap"></i><span>Chemical cleaning</span>
+            <i class="fas fa-pump-soap"></i
+            ><span (click)="menuFxn('Chemical cleaning')"
+              >Chemical cleaning</span
+            >
           </li>
           <li>
-            <i class="fas fa-mobile-alt"></i><span>Mobile phone repair</span>
+            <i class="fas fa-mobile-alt"></i
+            ><span (click)="menuFxn('Mobile phone repair')"
+              >Mobile phone repair</span
+            >
           </li>
-          <li><i class="fas fa-glass-cheers"></i><span>Bars</span></li>
-          <li><i class="fas fa-beer"></i><span>Nightlife</span></li>
+          <li>
+            <i class="fas fa-glass-cheers"></i
+            ><span (click)="menuFxn('Bars')">Bars</span>
+          </li>
+          <li>
+            <i class="fas fa-beer"></i
+            ><span (click)="menuFxn('Nightlife')">Nightlife</span>
+          </li>
         </div>
         <div>
-          <li><i class="fas fa-soap"></i><span>Hairdressers</span></li>
-          <li><i class="fas fa-dumbbell"></i><span>Gyms</span></li>
-          <li><i class="fas fa-hot-tub"></i><span>Massages</span></li>
-          <li><i class="fas fa-shopping-cart"></i><span>Shopping</span></li>
+          <li>
+            <i class="fas fa-soap"></i
+            ><span (click)="menuFxn('Hairdressers')">Hairdressers</span>
+          </li>
+          <li>
+            <i class="fas fa-dumbbell"></i
+            ><span (click)="menuFxn('Gyms')">Gyms</span>
+          </li>
+          <li>
+            <i class="fas fa-hot-tub"></i
+            ><span (click)="menuFxn('Massages')">Massages</span>
+          </li>
+          <li>
+            <i class="fas fa-shopping-cart"></i
+            ><span (click)="menuFxn('Shopping')">Shopping</span>
+          </li>
         </div>
       </ul>
     </li>
