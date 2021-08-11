@@ -18,12 +18,15 @@ export class AppComponent implements OnInit {
   category$ = new ReplaySubject<string[]>();
   filter$ = new ReplaySubject<string>();
   menuList$ = new ReplaySubject<string>();
+  year$ = new ReplaySubject<number>();
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     this.filter$.subscribe((val) => {
       this.filter = val ? val : '';
     });
+    this.year$.next(new Date().getFullYear());
+    this.year$.subscribe((year) => console.log(year));
   }
 
   yelpDataOutput(event: any) {
