@@ -1,14 +1,3 @@
-<!-- <img
-  src="https://lh3.googleusercontent.com/places/AAcXr8rDQAqwhG8Jiugl70NgI-8USMRxhblu-0eHlP32GV9cEc0exuvta6LtqmdUeYfBvUfVFGd-A6rKCvdE0xp9XV3_vmPy6LY6csg=s1600-w400"
-  alt=""
-/> -->
-<!-- <div *ngFor="let item of items">
-
-</div> -->
-<!-- <img
-  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=Aap_uECj7zCRU_kotqVtGB9lgWECAGd24X7FmEKTvPuwOrvEJUdLcByqVu44MlV7RXnfYvGV9uEzl9gln7A5s2BIcqkn32HnHRv0_r48e7Q5SWbVb-h5gZCRK8j9GSq0s5f9T4M4emXAR2BCUtglYGgq34Bm9KMpiDYJ_NXwuWBGejjAPUXP&key=AIzaSyD36Z7sXImc__tax_Z7GKa-dm2jnv550e8"
-  alt=""
-/> -->
 <div class="search-result">{{ search }}</div>
 <hr />
 <div
@@ -17,7 +6,7 @@
 >
   <div>
     <img
-      *ngIf="!!results.photos && results.photos.length > 0"
+      *ngIf="!!results.photos"
       class="photo"
       [src]="
         'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' +

@@ -9,16 +9,6 @@ import { ReplaySubject } from 'rxjs';
 export class SearchResultComponent implements OnInit {
   @Input() set searchResult(val: any) {
     this.searchResult$.next(val ? val.results : []);
-
-    // const rating =val.results.rating;
-    // const arr:number[] =[]
-    // for (let index = 1; index < Math.floor (rating); index++) {
-    //   arr.push(1);
-    // }
-
-    // if(rating % Math.floor(rating)> 0){
-    //   arr.push(0)
-    // }
   }
   search: string = 'Search result shows here';
   ngOnInit(): void {}

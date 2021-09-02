@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
       this.filter = val ? val : '';
     });
     this.year$.next(new Date().getFullYear());
-    this.year$.subscribe((year) => console.log(year));
   }
 
   yelpDataOutput(event: any) {
@@ -39,15 +38,15 @@ export class AppComponent implements OnInit {
   }
   filterFunction(event: string) {
     this.filter$.next(event);
-    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${event}&key=${environment.googleApiKey}`;
+    let url = `https://cor5allow.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${event}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data) => {
       this.data$.next(data);
     });
   }
-  //https://cors-anywhere.herokuapp.com/corsdemo
-  //visit the above url to grant cors permission.
+
+  //https://cor5allow.herokuapp.com/ is used to grant cors access
   search() {
-    let url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
+    let url = `https://cor5allow.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data: any) => {
       this.data$.next(data);
       //empty array to save the types

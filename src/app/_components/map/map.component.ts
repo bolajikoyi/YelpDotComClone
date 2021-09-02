@@ -1,3 +1,4 @@
+import { ConditionalExpr } from '@angular/compiler';
 import {
   Component,
   OnInit,
@@ -27,13 +28,19 @@ export class MapComponent implements OnInit, AfterViewInit {
   num!: number;
   name!: string;
   search!: any;
+  items: any;
   searchResult$ = new ReplaySubject<any[]>();
   constructor(private mapDataService: MapDataService) {}
 
   ngOnInit(): void {}
 
   newMap() {
-    this.map = L.map('map').setView([this.latitude, this.longitude], 13);
+    // this.map = L.map('map').setView([this.latitude, this.longitude], 13);
+    this.map = L.map('map', {
+      center: [this.latitude, this.longitude],
+      zoom: 13,
+      // layers: [this.items],
+    });
 
     // Setting for using the default marker icon
     const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -132,25 +139,27 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     this.searchResult$.subscribe((val) => {
       // where i is the index
+
       let newLatLng = [];
       for (let [i, value] of val.entries()) {
         this.latLng = value.geometry.location;
-        newLatLng.push(this.latLng);
-        // console.log(this.latLng);
         this.name = value.name;
         this.num = i + 1;
+        newLatLng.push(this.latLng);
+
         var name = L.marker([this.latLng.lat, this.latLng.lng])
           .bindPopup(`${this.num}. ${this.name}`)
           .addTo(this.map);
+        this.items = L.layerGroup([name]);
         this.search = name;
-        // console.log([this.num, this.name]);
       }
+
       if (newLatLng.length < 1) {
         return;
       }
+
       //setting the view of the map to the markers
       const group = L.latLngBounds(newLatLng);
-      // console.warn(group);
 
       this.map.fitBounds(group);
     });
