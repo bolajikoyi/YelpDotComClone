@@ -1,16 +1,7 @@
-import { ConditionalExpr } from '@angular/compiler';
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { icon, Marker } from 'leaflet';
-import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
-import { MapDataService } from 'src/app/_service';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -30,16 +21,14 @@ export class MapComponent implements OnInit, AfterViewInit {
   search!: any;
   items: any;
   searchResult$ = new ReplaySubject<any[]>();
-  constructor(private mapDataService: MapDataService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   newMap() {
-    // this.map = L.map('map').setView([this.latitude, this.longitude], 13);
     this.map = L.map('map', {
       center: [this.latitude, this.longitude],
       zoom: 13,
-      // layers: [this.items],
     });
 
     // Setting for using the default marker icon
@@ -56,36 +45,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       tooltipAnchor: [16, -28],
       shadowSize: [41, 41],
     });
-    Marker.prototype.options.icon = iconDefault;
-
-    var redIcon = new L.Icon({
-      iconUrl:
-        'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-      shadowUrl:
-        'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41],
-    });
-
-    // for tracking live location by setting watch to true and setting the view to the location of the user
-    // let newLatLng: any;
-    // const onLocationFound = (e: any) => {
-    //   this.latitude = e.latlng.lat;
-    //   this.latitude = e.latlng.lng;
-    //   console.log(this.latitude);
-    //   var radius = e.accuracy / 2;
-    //   var marker = L.marker(e.latlng, { icon: redIcon })
-    //     .addTo(this.map)
-    //     .bindPopup(`You are within ${radius} meter from this point`)
-    //     .openPopup();
-    //   L.circle(e.latlng, radius).addTo(this.map);
-    //   newLatLng = e.latlng;
-    // };
-
-    // this.map.on('locationfound', onLocationFound);
-    // this.map.locate({ setView: true, watch: true, maxZoom: 16 });
+    Marker.prototype.options.icon = iconDefault; // setting iconDefault as the default marker icon
 
     // Using click event to get Latitude and Longitude values from the map
     const popup = L.popup();
@@ -110,6 +70,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       }
     );
     mapboxStreet.addTo(this.map);
+
     //street tile
     var googleStreets = L.tileLayer(
       'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
@@ -118,7 +79,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       }
     );
-    // googleStreets.addTo(this.map);
+
     //Hybrid tile
     var googleHybrid = L.tileLayer(
       'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
@@ -127,7 +88,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       }
     );
-    // googleHybrid.addTo(this.map);
+
     //Terrain tile
     var googleTerrain = L.tileLayer(
       'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
@@ -138,9 +99,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     );
 
     this.searchResult$.subscribe((val) => {
-      // where i is the index
-
       let newLatLng = [];
+      // where i is the index
       for (let [i, value] of val.entries()) {
         this.latLng = value.geometry.location;
         this.name = value.name;
@@ -163,8 +123,6 @@ export class MapComponent implements OnInit, AfterViewInit {
 
       this.map.fitBounds(group);
     });
-
-    // googleTerrain.addTo(this.map);
 
     // map layers control
     var baseMaps = {
