@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { icon, Marker } from 'leaflet';
 import { ReplaySubject } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -65,8 +65,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken:
-          'pk.eyJ1Ijoib21vYm9sYWppLWtveWkiLCJhIjoiY2txZm5weHFxMXJsajJ1b3ZhMjM1eWdkaCJ9.OpqdDwLtyeJdGpAiQFItUQ',
+        accessToken: environment.accessToken,
       }
     );
     mapboxStreet.addTo(this.map);
@@ -102,18 +101,16 @@ export class MapComponent implements OnInit, AfterViewInit {
       let newLatLng = [];
       // where i is the index
       for (let [i, value] of val.entries()) {
-        this.latLng = value.geometry.location;
-        this.name = value.name;
-        this.num = i + 1;
-        newLatLng.push(this.latLng);
+        this.latLng = value.geometry.location; // Obtaining the Latitude and longitude of each of the search result
+        this.name = value.name; // Taking name from the search result
+        this.num = i + 1; // making the index start form 1 instead of 0.
+        newLatLng.push(this.latLng); // pushing the latitude and longitude obtained in line 104 into the empty array in line 101.
 
-        var name = L.marker([this.latLng.lat, this.latLng.lng])
+        var arrayMarkers = L.marker([this.latLng.lat, this.latLng.lng])
           .bindPopup(`${this.num}. ${this.name}`)
           .addTo(this.map);
-        this.items = L.layerGroup([name]);
-        this.search = name;
       }
-
+      // We are telling the application to do nothing if there are no search results
       if (newLatLng.length < 1) {
         return;
       }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-search-result',
@@ -13,6 +14,6 @@ export class SearchResultComponent implements OnInit {
   search: string = 'Search result shows here';
   ngOnInit(): void {}
   public searchResult$ = new ReplaySubject<any[]>();
-  apiKey = 'AIzaSyD36Z7sXImc__tax_Z7GKa-dm2jnv550e8';
+  apiKey = environment.googleApiKey;
   constructor() {}
 }

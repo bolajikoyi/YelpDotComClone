@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
@@ -36,17 +36,17 @@ export class AppComponent implements OnInit {
     this.searchCity = event.trim();
     this.search();
   }
-  filterFunction(event: string) {
-    this.filter$.next(event);
-    let url = `https://cor5allow.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${event}&key=${environment.googleApiKey}`;
+  filterFunction(filterText: string) {
+    this.filter$.next(filterText);
+    let url = `${environment.CORS}https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&type=${filterText}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data) => {
       this.data$.next(data);
     });
   }
 
-  //https://cor5allow.herokuapp.com/ is used to grant cors access
+  //https://cor5allow.herokuapp.com/ is used to grant cors access. Here, we are accessing it from the environments file (i.e. environment.CORS).
   search() {
-    let url = `https://cor5allow.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
+    let url = `${environment.CORS}https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data: any) => {
       this.data$.next(data);
       //empty array to save the types
