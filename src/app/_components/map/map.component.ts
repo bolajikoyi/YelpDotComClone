@@ -68,7 +68,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         accessToken: environment.accessToken,
       }
     );
-    mapboxStreet.addTo(this.map);
+    // mapboxStreet.addTo(this.map);
 
     //street tile
     var googleStreets = L.tileLayer(
@@ -78,6 +78,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       }
     );
+       googleStreets.addTo(this.map);
 
     //Hybrid tile
     var googleHybrid = L.tileLayer(
@@ -104,7 +105,8 @@ export class MapComponent implements OnInit, AfterViewInit {
         this.latLng = value.geometry.location; // Obtaining the Latitude and longitude of each of the search result
         this.name = value.name; // Taking name from the search result
         this.num = i + 1; // making the index start form 1 instead of 0.
-        newLatLng.push(this.latLng); // pushing the latitude and longitude obtained in line 104 into the empty array in line 101.
+        newLatLng.push(this.latLng); // pushing the latitude and longitude obtained in line 105 into the empty array in line 102.
+        console.log(newLatLng)
 
         var arrayMarkers = L.marker([this.latLng.lat, this.latLng.lng])
           .bindPopup(`${this.num}. ${this.name}`)
