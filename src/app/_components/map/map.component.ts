@@ -56,19 +56,19 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     // tileLayers
     // mapbox street tile
-    var mapboxStreet = L.tileLayer(
-      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
-      {
-        attribution:
-          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: environment.accessToken,
-      }
-    );
-    mapboxStreet.addTo(this.map);
+    // var mapboxStreet = L.tileLayer(
+    //   'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+    //   {
+    //     attribution:
+    //       'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    //     maxZoom: 18,
+    //     id: 'mapbox/streets-v11',
+    //     tileSize: 512,
+    //     zoomOffset: -1,
+    //     accessToken: environment.accessToken,
+    //   }
+    // );
+    // mapboxStreet.addTo(this.map);
 
     //street tile
     var googleStreets = L.tileLayer(
@@ -78,6 +78,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       }
     );
+    googleStreets.addTo(this.map);
 
     //Hybrid tile
     var googleHybrid = L.tileLayer(
@@ -123,7 +124,6 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     // map layers control
     var baseMaps = {
-      MapboxStreet: mapboxStreet,
       GoogleStreets: googleStreets,
       GoogleSatelite: googleHybrid,
       GoogleTerrain: googleTerrain,

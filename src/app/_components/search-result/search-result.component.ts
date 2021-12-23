@@ -11,7 +11,7 @@ export class SearchResultComponent implements OnInit {
   @Input() set searchResult(val: any) {
     this.searchResult$.next(val ? val.results : []);
   }
-  search: string = 'Search result shows here';
+  search: string = 'Search results show here';
   ngOnInit(): void {}
   public searchResult$ = new ReplaySubject<any[]>();
   apiKey = environment.googleApiKey;

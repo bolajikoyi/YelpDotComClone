@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
     let url = `${environment.CORS}https://maps.googleapis.com/maps/api/place/textsearch/json?query=${this.searchItem}+in+${this.searchCity}&key=${environment.googleApiKey}`;
     return this.http.get(url).subscribe((data: any) => {
       this.data$.next(data);
+      console.log(data);
       //empty array to save the types
       let types = [];
       //for loop to iterate over the results from the api
