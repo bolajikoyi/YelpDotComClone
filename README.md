@@ -1,6 +1,6 @@
 # Yelpclone
 
-Replace the GoogleApi with yours to use the application. Thank you.
+Replace the Google places Api with yours to use the application. Thank you.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
